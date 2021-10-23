@@ -24,9 +24,10 @@
 
     <!-- LightAPI used for setting NMS block lighting -->
     <dependency>
-      <groupId>io.github.qveshn</groupId>
-      <artifactId>LightAPI-fork</artifactId>
-      <version>3.5.2-SNAPSHOT</version>
+      <groupId>ru.beykerykt.minecraft</groupId>
+      <artifactId>lightapi-bukkit-common</artifactId>
+      <version>5.0.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- WorldGuard for WGManager abstract class -->
