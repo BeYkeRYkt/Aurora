@@ -28,10 +28,11 @@ public class LightAPI {
    * @param location Location to remove lighting from
    * @param lightFlags Type of lighting to remove
    * @param async Whether light updating should be asynchronous
-   * @see #setLight(Location, int, int, boolean)
+   * @param force Enable force mode
+   * @see #setLight(Location, int, int, boolean, boolean)
    */
-  public static void clearLight(Location location, int lightFlags, boolean async) {
-    setLight(location, lightFlags, 0, async);
+  public static void clearLight(Location location, int lightFlags, boolean async, boolean force) {
+    setLight(location, lightFlags, 0, async, force);
   }
 
   /**
@@ -41,10 +42,15 @@ public class LightAPI {
    * @param lightLevel Light level to set
    * @param lightFlags Type of lighting to create
    * @param async Whether light updating should be asynchronous
+   * @param force Enable force mode
    */
-  public static void setLight(Location location, int lightFlags, int lightLevel, boolean async) {
+  public static void setLight(Location location, int lightFlags, int lightLevel, boolean async, boolean force) {
     EditPolicy editPolicy = async ? EditPolicy.DEFERRED : EditPolicy.IMMEDIATE;
     SendPolicy sendPolicy = async ? SendPolicy.DEFERRED : SendPolicy.IMMEDIATE;
+    if (force) {
+      editPolicy = EditPolicy.FORCE_IMMEDIATE;
+      sendPolicy = SendPolicy.IMMEDIATE;
+    }
     mAPI.setLightLevel(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ(),
             lightLevel, lightFlags, editPolicy, sendPolicy, null);
   }

@@ -58,14 +58,14 @@ public abstract class ParticleTask {
 
   public abstract void runTasks();
 
-  public void killTasks() {
+  public void killTasks(boolean isShutdown) {
     for (BukkitTask t : runnables) {
       t.cancel();
     }
 
     if (lighting) {
       for (Location loc : locs) {
-        LightAPI.clearLight(loc, LightType.BLOCK_LIGHTING, true);
+        LightAPI.clearLight(loc, LightType.BLOCK_LIGHTING, true, isShutdown);
       }
     }
   }

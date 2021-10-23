@@ -51,8 +51,8 @@ public abstract class ComplexParticleTask extends ParticleTask {
             new BukkitRunnable() {
               @Override
               public void run() {
-                LightAPI.setLight(locs[locIndex], LightType.BLOCK_LIGHTING, 15, true);
-                LightAPI.setLight(locs[locIndex + 1], LightType.BLOCK_LIGHTING, 15, true);
+                LightAPI.setLight(locs[locIndex], LightType.BLOCK_LIGHTING, 15, true, false);
+                LightAPI.setLight(locs[locIndex + 1], LightType.BLOCK_LIGHTING, 15, true, false);
               }
             }.runTask(Aurora.getInstance());
           }

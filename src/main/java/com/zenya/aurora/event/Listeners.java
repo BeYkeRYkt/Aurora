@@ -91,7 +91,7 @@ public class Listeners implements Listener {
     String biomeName = ZBiome.matchZBiome(biome).equals(ZBiome.CUSTOM) ? biome.name() : ZBiome.matchZBiome(biome).name();
 
     //Remove old tasks
-    ParticleManager.INSTANCE.unregisterTasks(player);
+    ParticleManager.INSTANCE.unregisterTasks(player, false);
 
     //Ignore if spawn conditions are not met
     if (StorageFileManager.getConfig().listContains("disabled-worlds", player.getWorld().getName())) {
