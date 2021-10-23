@@ -14,12 +14,15 @@ public class LightAPI {
 
   public static LightAPI INSTANCE = new LightAPI();
   private static ru.beykerykt.minecraft.lightapi.common.LightAPI mAPI;
+  private static boolean disabled;
 
   public LightAPI() {
     mAPI = ru.beykerykt.minecraft.lightapi.common.LightAPI.get();
+    disabled = false;
   }
 
   public static void disable() {
+    disabled = true;
   }
 
   /**
@@ -45,6 +48,9 @@ public class LightAPI {
    * @param force Enable force mode
    */
   public static void setLight(Location location, int lightFlags, int lightLevel, boolean async, boolean force) {
+    if (disabled) {
+      return;
+    }
     EditPolicy editPolicy = async ? EditPolicy.DEFERRED : EditPolicy.IMMEDIATE;
     SendPolicy sendPolicy = async ? SendPolicy.DEFERRED : SendPolicy.IMMEDIATE;
     if (force) {
