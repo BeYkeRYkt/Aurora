@@ -9,7 +9,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import ru.beykerykt.minecraft.lightapi.common.api.engine.LightType;
+
+import ru.beykerykt.minecraft.lightapi.common.api.engine.LightFlag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,8 @@ public abstract class ComplexParticleTask extends ParticleTask {
             new BukkitRunnable() {
               @Override
               public void run() {
-                LightAPI.setLight(locs[locIndex], LightType.BLOCK_LIGHTING, 15, true, false);
-                LightAPI.setLight(locs[locIndex + 1], LightType.BLOCK_LIGHTING, 15, true, false);
+                LightAPI.setLight(locs[locIndex], LightFlag.BLOCK_LIGHTING, 15, true, false);
+                LightAPI.setLight(locs[locIndex + 1], LightFlag.BLOCK_LIGHTING, 15, true, false);
               }
             }.runTask(Aurora.getInstance());
           }
